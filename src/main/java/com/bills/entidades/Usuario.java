@@ -37,6 +37,11 @@ public class Usuario implements Serializable {
     private Long id;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 90)
+    @Column(name = "login")
+    private String userId;
+    @Basic(optional = false)
+    @NotNull
     @Size(min = 1, max = 32)
     @Column(name = "clave")
     private String clave;
