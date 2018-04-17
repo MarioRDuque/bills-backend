@@ -7,9 +7,7 @@ package com.billsbackend.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,7 +16,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -63,12 +60,6 @@ public class Empresa implements Serializable {
     @NotNull
     @Column(name = "estado")
     private boolean estado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rucempresa")
-    private List<Persona> personaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rucempresa")
-    private List<Tipousuario> tipousuarioList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ruc")
-    private List<Confempresa> confempresaList;
     @JoinColumn(name = "idregimen", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Regimen idregimen;

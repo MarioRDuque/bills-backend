@@ -37,7 +37,7 @@ public class ManejodeExcepciones {
     public Respuesta respuestaException(Exception e) {
         Respuesta resp = new Respuesta();
         resp.setEstadoOperacion(EstadoOperacionEnum.ERROR.getValor());
-        resp.setOperacionMensaje(Mensaje.ERROR_GENERAL);
+        resp.setOperacionMensaje(Mensaje.ERR_GENERAL);
         loggerGeneral.error("ERROR EN LA LINEA N° " + e.getStackTrace()[0].getLineNumber()
                 + " DEL ARCHIVO: " + e.getStackTrace()[0].getFileName()
                 + " EN EL METODO: " + e.getStackTrace()[0].getMethodName()
