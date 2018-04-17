@@ -51,10 +51,10 @@ public abstract class GenericoControladorImpl<Entidad, TipoLlave> implements Gen
                 Entidad e = servicio.crear(entidad);
                 if (e != null ) {
                     resp.setEstadoOperacion(Respuesta.EstadoOperacionEnum.EXITO.getValor());
-                    resp.setOperacionMensaje(Mensaje.OPERACION_CORRECTA);
+                    resp.setOperacionMensaje(Mensaje.OP_CORRECTA);
                     resp.setExtraInfo(e);
                 } else {
-                    throw new GeneralException(Mensaje.ERROR_CRUD_GUARDAR, "Guardar retorno nulo", loggerControlador);
+                    throw new GeneralException(Mensaje.ERR_GUARDAR, "Guardar retorno nulo", loggerControlador);
                 }
             } catch (Exception e) {
                 throw e;
@@ -71,10 +71,10 @@ public abstract class GenericoControladorImpl<Entidad, TipoLlave> implements Gen
                 List<Entidad> entidades = servicio.listarTodos();
                 if (entidades != null && !entidades.isEmpty()) {
                     resp.setEstadoOperacion(Respuesta.EstadoOperacionEnum.EXITO.getValor());
-                    resp.setOperacionMensaje(Mensaje.OPERACION_CORRECTA);
+                    resp.setOperacionMensaje(Mensaje.OP_CORRECTA);
                     resp.setExtraInfo(entidades);
                 } else {
-                    throw new GeneralException(Mensaje.ERROR_CRUD_LISTAR, "Error al listar", loggerControlador);
+                    throw new GeneralException(Mensaje.ERR_LISTAR, "Error al listar", loggerControlador);
                 }
             } catch (Exception e) {
                 throw e;
@@ -90,10 +90,10 @@ public abstract class GenericoControladorImpl<Entidad, TipoLlave> implements Gen
                 List<Entidad> entidades = servicio.listarVigentes();
                 if (entidades != null && !entidades.isEmpty()) {
                     resp.setEstadoOperacion(Respuesta.EstadoOperacionEnum.EXITO.getValor());
-                    resp.setOperacionMensaje(Mensaje.OPERACION_CORRECTA);
+                    resp.setOperacionMensaje(Mensaje.OP_CORRECTA);
                     resp.setExtraInfo(entidades);
                 } else {
-                    throw new GeneralException(Mensaje.ERROR_CRUD_LISTAR, "Error al listar", loggerControlador);
+                    throw new GeneralException(Mensaje.ERR_LISTAR, "Error al listar", loggerControlador);
                 }
             } catch (Exception e) {
                 throw e;
@@ -109,10 +109,10 @@ public abstract class GenericoControladorImpl<Entidad, TipoLlave> implements Gen
                 List<Entidad> entidades = servicio.listarNoVigentes();
                 if (entidades != null && !entidades.isEmpty()) {
                     resp.setEstadoOperacion(Respuesta.EstadoOperacionEnum.EXITO.getValor());
-                    resp.setOperacionMensaje(Mensaje.OPERACION_CORRECTA);
+                    resp.setOperacionMensaje(Mensaje.OP_CORRECTA);
                     resp.setExtraInfo(entidades);
                 } else {
-                    throw new GeneralException(Mensaje.ERROR_CRUD_LISTAR, "Error al listar", loggerControlador);
+                    throw new GeneralException(Mensaje.ERR_LISTAR, "Error al listar", loggerControlador);
                 }
             } catch (Exception e) {
                 throw e;
@@ -128,7 +128,7 @@ public abstract class GenericoControladorImpl<Entidad, TipoLlave> implements Gen
                 Entidad entidad = servicio.obtener(id);
                 if (entidad != null) {
                     resp.setEstadoOperacion(Respuesta.EstadoOperacionEnum.EXITO.getValor());
-                    resp.setOperacionMensaje(Mensaje.OPERACION_CORRECTA);
+                    resp.setOperacionMensaje(Mensaje.OP_CORRECTA);
                     resp.setExtraInfo(entidad);
                 } else {
                     throw new GeneralException(Mensaje.NO_EXISTEN_DATOS, "Error al listar", loggerControlador);
@@ -148,10 +148,10 @@ public abstract class GenericoControladorImpl<Entidad, TipoLlave> implements Gen
                 Entidad e = servicio.actualizar(entidad);
                 if (e != null ) {
                     resp.setEstadoOperacion(Respuesta.EstadoOperacionEnum.EXITO.getValor());
-                    resp.setOperacionMensaje(Mensaje.OPERACION_CORRECTA);
+                    resp.setOperacionMensaje(Mensaje.OP_CORRECTA);
                     resp.setExtraInfo(e);
                 } else {
-                    throw new GeneralException(Mensaje.ERROR_CRUD_ACTUALIZAR, "Guardar retorno nulo", loggerControlador);
+                    throw new GeneralException(Mensaje.ERR_ACTUALIZAR, "Guardar retorno nulo", loggerControlador);
                 }
             } catch (Exception e) {
                 throw e;
@@ -168,10 +168,10 @@ public abstract class GenericoControladorImpl<Entidad, TipoLlave> implements Gen
                 TipoLlave e = servicio.eliminarLogica(entidadId);
                 if (e != null ) {
                     resp.setEstadoOperacion(Respuesta.EstadoOperacionEnum.EXITO.getValor());
-                    resp.setOperacionMensaje(Mensaje.OPERACION_CORRECTA);
+                    resp.setOperacionMensaje(Mensaje.OP_CORRECTA);
                     resp.setExtraInfo(e);
                 } else {
-                    throw new GeneralException(Mensaje.ERROR_CRUD_ELIMINAR, "Guardar retorno nulo", loggerControlador);
+                    throw new GeneralException(Mensaje.ERR_ELIMINAR, "Guardar retorno nulo", loggerControlador);
                 }
             } catch (Exception e) {
                 throw e;
@@ -187,10 +187,10 @@ public abstract class GenericoControladorImpl<Entidad, TipoLlave> implements Gen
                 TipoLlave e = servicio.eliminarFisica(entidadId);
                 if (e != null ) {
                     resp.setEstadoOperacion(Respuesta.EstadoOperacionEnum.EXITO.getValor());
-                    resp.setOperacionMensaje(Mensaje.OPERACION_CORRECTA);
+                    resp.setOperacionMensaje(Mensaje.OP_CORRECTA);
                     resp.setExtraInfo(e);
                 } else {
-                    throw new GeneralException(Mensaje.ERROR_CRUD_ELIMINAR, "Guardar retorno nulo", loggerControlador);
+                    throw new GeneralException(Mensaje.ERR_ELIMINAR, "Guardar retorno nulo", loggerControlador);
                 }
             } catch (Exception e) {
                 throw e;

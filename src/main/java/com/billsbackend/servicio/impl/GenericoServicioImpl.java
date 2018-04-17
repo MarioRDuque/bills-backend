@@ -2,7 +2,10 @@ package com.billsbackend.servicio.impl;
 
 import com.billsbackend.dao.GenericoDao;
 import com.billsbackend.servicio.GenericoServicio;
+import com.billsbackend.util.BusquedaPaginada;
+import com.billsbackend.util.Criterio;
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
@@ -22,6 +25,56 @@ public abstract class GenericoServicioImpl<Entidad, TipoLlave> implements Generi
     @Override
     public Entidad obtener(TipoLlave id) {
         return this.genericoDao.obtener(this.domainClass, id);
+    }
+    
+    @Override
+    public void grabarTodos(List<Entidad> list){
+        
+    }
+
+    @Override
+    public List<Entidad> listarTodos(){
+        return null;
+    }
+      
+    @Override
+    public List<Entidad> listarVigentes(){
+        return null;
+    }
+     
+    @Override
+    public List<Entidad> listarNoVigentes(){
+        return null;
+    }
+
+    @Override
+    public List<Entidad> buscarPorCriteria(Criterio filtro){
+        return null;
+    }
+	
+    @Override
+    public BusquedaPaginada busquedaPaginada(Entidad entidadBuscar, BusquedaPaginada busquedaPaginada){
+        return null;
+    }
+	
+    @Override
+    public Entidad crear(Entidad entidad){
+        return null;
+    }
+        
+    @Override
+    public Entidad actualizar(Entidad entidad){
+        return null;
+    }
+        
+    @Override
+    public TipoLlave eliminarLogica(TipoLlave entidadId){
+        return null;
+    }
+        
+    @Override
+    public TipoLlave eliminarFisica(TipoLlave entidadId){
+        return null;
     }
 
 }

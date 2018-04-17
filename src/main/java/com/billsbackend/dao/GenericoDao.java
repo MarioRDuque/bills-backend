@@ -8,7 +8,6 @@ package com.billsbackend.dao;
 
 import com.billsbackend.util.Criterio;
 import java.util.List;
-import org.hibernate.criterion.Projection;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
