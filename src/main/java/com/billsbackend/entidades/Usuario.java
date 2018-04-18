@@ -13,6 +13,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -52,6 +53,11 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "idpersona", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Persona idpersona;
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Column(name="foto")
+    private byte[] foto;
 
     public Usuario() {
     }
