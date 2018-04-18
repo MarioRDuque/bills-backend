@@ -32,12 +32,8 @@ public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "id")
-    private Long id;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 90)
+    @NotNull
     @Column(name = "login")
     private String userId;
     @Basic(optional = false)
@@ -56,19 +52,19 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(Long id) {
-        this.id = id;
+    public Usuario(String userId) {
+        this.userId = userId;
     }
 
-    public Usuario(Long id, String clave) {
-        this.id = id;
+    public Usuario(String userId, String clave) {
+        this.userId = userId;
         this.password = clave;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (userId != null ? userId.hashCode() : 0);
         return hash;
     }
 
@@ -79,7 +75,7 @@ public class Usuario implements Serializable {
             return false;
         }
         Usuario other = (Usuario) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.userId == null && other.userId!= null) || (this.userId != null && !this.userId.equals(other.userId))) {
             return false;
         }
         return true;
@@ -87,7 +83,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.bills.entidades.Usuario[ id=" + id + " ]";
+        return "com.bills.entidades.Usuario[ id=" + userId + " ]";
     }
 
 }

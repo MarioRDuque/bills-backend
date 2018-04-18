@@ -32,7 +32,7 @@ public class Usuariotipousuario implements Serializable {
     @NotNull
     @Column(name = "estado")
     private boolean estado;
-    @JoinColumn(name = "idusuario", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "idusuario", referencedColumnName = "login", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Usuario usuario;
     @JoinColumn(name = "idtipousuario", referencedColumnName = "id", insertable = false, updatable = false)
