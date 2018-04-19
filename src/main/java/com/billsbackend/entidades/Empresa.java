@@ -48,11 +48,6 @@ public class Empresa implements Serializable {
     private long idubigeo;
     @Basic(optional = false)
     @NotNull
-    @Lob
-    @Column(name = "logo")
-    private byte[] logo;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "fechacaducidad")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechacaducidad;
@@ -60,6 +55,9 @@ public class Empresa implements Serializable {
     @NotNull
     @Column(name = "estado")
     private boolean estado;
+    @Lob
+    @Column(name = "logo")
+    private byte[] logo;
     @JoinColumn(name = "idregimen", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Regimen idregimen;

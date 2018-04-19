@@ -14,31 +14,33 @@ import lombok.Data;
 
 /**
  *
- * @author francis
+ * @author PROPIETARIO
  */
 @Data
 @Embeddable
-public class UsuariotipousuarioPK implements Serializable {
+public class MenutipousuarioPK implements Serializable {
+
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idusuario")
-    private String idusuario;
+    @Column(name = "idmenu")
+    private long idmenu;
     @Basic(optional = false)
     @NotNull
     @Column(name = "idtipousuario")
     private long idtipousuario;
 
-    public UsuariotipousuarioPK() {
+    public MenutipousuarioPK() {
     }
 
-    public UsuariotipousuarioPK(String idusuario, long idtipousuario) {
-        this.idusuario = idusuario;
+    public MenutipousuarioPK(long idmenu, long idtipousuario) {
+        this.idmenu = idmenu;
         this.idtipousuario = idtipousuario;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
+        hash += (int) idmenu;
         hash += (int) idtipousuario;
         return hash;
     }
@@ -46,11 +48,11 @@ public class UsuariotipousuarioPK implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof UsuariotipousuarioPK)) {
+        if (!(object instanceof MenutipousuarioPK)) {
             return false;
         }
-        UsuariotipousuarioPK other = (UsuariotipousuarioPK) object;
-        if (this.idusuario != other.idusuario) {
+        MenutipousuarioPK other = (MenutipousuarioPK) object;
+        if (this.idmenu != other.idmenu) {
             return false;
         }
         if (this.idtipousuario != other.idtipousuario) {
@@ -61,7 +63,7 @@ public class UsuariotipousuarioPK implements Serializable {
 
     @Override
     public String toString() {
-        return "com.bills.entidades.UsuariotipousuarioPK[ idusuario=" + idusuario + ", idtipousuario=" + idtipousuario + " ]";
+        return "com.billsbackend.entidades.MenutipousuarioPK[ idmenu=" + idmenu + ", idtipousuario=" + idtipousuario + " ]";
     }
-
+    
 }

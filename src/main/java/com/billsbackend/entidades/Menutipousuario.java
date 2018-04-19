@@ -18,58 +18,66 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
 
+/**
+ *
+ * @author PROPIETARIO
+ */
 @Data
 @Entity
-@Table(name = "usuariotipousuario")
+@Table(name = "menutipousuario")
 @NamedQueries({
-    @NamedQuery(name = "Usuariotipousuario.findAll", query = "SELECT u FROM Usuariotipousuario u")})
-public class Usuariotipousuario implements Serializable {
+    @NamedQuery(name = "Menutipousuario.findAll", query = "SELECT m FROM Menutipousuario m")})
+public class Menutipousuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    protected UsuariotipousuarioPK usuariotipousuarioPK;
+    protected MenutipousuarioPK menutipousuarioPK;
     @Basic(optional = false)
     @NotNull
     @Column(name = "estado")
     private boolean estado;
-    @JoinColumn(name = "idusuario", referencedColumnName = "login", insertable = false, updatable = false)
+    @JoinColumn(name = "idmenu", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Usuario usuario;
+    private Menu menu;
     @JoinColumn(name = "idtipousuario", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Tipousuario tipousuario;
 
-    public Usuariotipousuario() {
+    public Menutipousuario() {
     }
 
-    public Usuariotipousuario(UsuariotipousuarioPK usuariotipousuarioPK) {
-        this.usuariotipousuarioPK = usuariotipousuarioPK;
+    public Menutipousuario(MenutipousuarioPK menutipousuarioPK) {
+        this.menutipousuarioPK = menutipousuarioPK;
     }
 
-    public Usuariotipousuario(UsuariotipousuarioPK usuariotipousuarioPK, boolean estado) {
-        this.usuariotipousuarioPK = usuariotipousuarioPK;
+    public Menutipousuario(MenutipousuarioPK menutipousuarioPK, boolean estado) {
+        this.menutipousuarioPK = menutipousuarioPK;
         this.estado = estado;
     }
 
-    public Usuariotipousuario(String idusuario, long idtipousuario) {
-        this.usuariotipousuarioPK = new UsuariotipousuarioPK(idusuario, idtipousuario);
+    public Menutipousuario(long idmenu, long idtipousuario) {
+        this.menutipousuarioPK = new MenutipousuarioPK(idmenu, idtipousuario);
+    }
+
+    public MenutipousuarioPK getMenutipousuarioPK() {
+        return menutipousuarioPK;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (usuariotipousuarioPK != null ? usuariotipousuarioPK.hashCode() : 0);
+        hash += (menutipousuarioPK != null ? menutipousuarioPK.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Usuariotipousuario)) {
+        if (!(object instanceof Menutipousuario)) {
             return false;
         }
-        Usuariotipousuario other = (Usuariotipousuario) object;
-        if ((this.usuariotipousuarioPK == null && other.usuariotipousuarioPK != null) || (this.usuariotipousuarioPK != null && !this.usuariotipousuarioPK.equals(other.usuariotipousuarioPK))) {
+        Menutipousuario other = (Menutipousuario) object;
+        if ((this.menutipousuarioPK == null && other.menutipousuarioPK != null) || (this.menutipousuarioPK != null && !this.menutipousuarioPK.equals(other.menutipousuarioPK))) {
             return false;
         }
         return true;
@@ -77,7 +85,7 @@ public class Usuariotipousuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.bills.entidades.Usuariotipousuario[ usuariotipousuarioPK=" + usuariotipousuarioPK + " ]";
+        return "com.billsbackend.entidades.Menutipousuario[ menutipousuarioPK=" + menutipousuarioPK + " ]";
     }
-
+    
 }
