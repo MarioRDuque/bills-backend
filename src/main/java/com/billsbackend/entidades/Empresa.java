@@ -42,6 +42,9 @@ public class Empresa implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "razonsocial")
     private String razonsocial;
+    @Size(min = 1, max = 6)
+    @Column(name = "codigoadmin", insertable = false, updatable = false)
+    private String codigoadmin;
     @Basic(optional = false)
     @NotNull
     @Column(name = "idubigeo")
