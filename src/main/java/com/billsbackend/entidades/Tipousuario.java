@@ -6,9 +6,7 @@
 package com.billsbackend.entidades;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +16,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -46,13 +43,9 @@ public class Tipousuario implements Serializable {
     @NotNull
     @Column(name = "estado")
     private boolean estado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipousuario")
-    private List<Tipousuariomenuopcion> tipousuariomenuopcionList;
     @JoinColumn(name = "rucempresa", referencedColumnName = "ruc")
     @ManyToOne(optional = false)
     private Empresa rucempresa;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipousuario")
-    private List<Usuariotipousuario> usuariotipousuarioList;
 
     public Tipousuario() {
     }

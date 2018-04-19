@@ -43,4 +43,6 @@ public interface GenericoDao <Entidad, TipoLlave> {
     
     Entidad obtenerPorCriteriaSinProyeccionesDistinct(Criterio filtro);
     
+    List<Entidad> buscarPorCriteriaSinProyecciones(Criterio filtro);
+    
 }
