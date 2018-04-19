@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -51,9 +53,9 @@ public class Menuopcion implements Serializable {
     @NotNull
     @Column(name = "estado")
     private boolean estado;
-    @Column(name = "idmenu")
-    @NotNull
-    private Long idmenu;
+    @JoinColumn(name = "idmenu", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Menu idmenu;
 
     public Menuopcion() {
     }

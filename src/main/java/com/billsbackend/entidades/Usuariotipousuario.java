@@ -51,7 +51,7 @@ public class Usuariotipousuario implements Serializable {
         this.estado = estado;
     }
 
-    public Usuariotipousuario(long idusuario, long idtipousuario) {
+    public Usuariotipousuario(String idusuario, long idtipousuario) {
         this.usuariotipousuarioPK = new UsuariotipousuarioPK(idusuario, idtipousuario);
     }
 

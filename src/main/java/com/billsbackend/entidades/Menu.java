@@ -60,11 +60,10 @@ public class Menu implements Serializable {
     @NotNull
     @Column(name = "estado")
     private boolean estado;
+    @OneToMany(mappedBy = "idpadre")
+    private List<Menu> menuList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmenu")
     private List<Menuopcion> menuopcionList;
-    @JoinColumn(name = "idpadre", referencedColumnName = "id", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Menu menu;
 
     public Menu() {
     }

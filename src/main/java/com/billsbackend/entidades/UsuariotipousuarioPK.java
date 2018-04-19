@@ -22,7 +22,7 @@ public class UsuariotipousuarioPK implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "idusuario")
-    private long idusuario;
+    private String idusuario;
     @Basic(optional = false)
     @NotNull
     @Column(name = "idtipousuario")
@@ -31,7 +31,7 @@ public class UsuariotipousuarioPK implements Serializable {
     public UsuariotipousuarioPK() {
     }
 
-    public UsuariotipousuarioPK(long idusuario, long idtipousuario) {
+    public UsuariotipousuarioPK(String idusuario, long idtipousuario) {
         this.idusuario = idusuario;
         this.idtipousuario = idtipousuario;
     }
@@ -39,7 +39,6 @@ public class UsuariotipousuarioPK implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) idusuario;
         hash += (int) idtipousuario;
         return hash;
     }

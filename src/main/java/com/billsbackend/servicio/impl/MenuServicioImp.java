@@ -87,7 +87,7 @@ public class MenuServicioImp extends GenericoServicioImpl<Menu, Long> implements
                 .add(Projections.property("menu.icono"), "icono")
                 .add(Projections.property("menu.estado"), "estado")
                 .add(Projections.property("menu.url"), "url")
-                .add(Projections.property("menu.idmenupadre"), "idmenupadre")
+                .add(Projections.property("menu.idpadre"), "idpadre")
         );
        // filtro.addOrder(Order.asc("menu.orden"));
         List<Menu> lmtu = menuTipousuarioDao.proyeccionPorCriteria(filtro, Menu.class);
@@ -113,8 +113,7 @@ public class MenuServicioImp extends GenericoServicioImpl<Menu, Long> implements
             );
             List<Menu> lmhijos = menuTipousuarioDao.proyeccionPorCriteria(filtro, Menu.class);
             apilarOpciones(lmhijos, ids);
-          //  lm.get(i).setMenuList(lmhijos);
-            lm.get(i).setMenuopcionList(lmhijos);
+            lm.get(i).setMenuList(lmhijos);
             obtenerSubmenus(lmhijos, ids);
         }
     }
