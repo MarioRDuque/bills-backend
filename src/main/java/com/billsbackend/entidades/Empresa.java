@@ -8,7 +8,6 @@ package com.billsbackend.entidades;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,7 +16,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -57,14 +55,12 @@ public class Empresa implements Serializable {
     @NotNull
     @Column(name = "estado")
     private boolean estado;
-    @JoinColumn(name = "idregimen", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Regimen idregimen;
-    @Basic(optional = false)
-    @NotNull
     @Lob
     @Column(name = "logo")
     private byte[] logo;
+    @JoinColumn(name = "idregimen", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Regimen idregimen;
 
     public Empresa() {
     }
@@ -96,10 +92,7 @@ public class Empresa implements Serializable {
             return false;
         }
         Empresa other = (Empresa) object;
-        if ((this.ruc == null && other.ruc != null) || (this.ruc != null && !this.ruc.equals(other.ruc))) {
-            return false;
-        }
-        return true;
+        return !((this.ruc == null && other.ruc != null) || (this.ruc != null && !this.ruc.equals(other.ruc)));
     }
 
     @Override
