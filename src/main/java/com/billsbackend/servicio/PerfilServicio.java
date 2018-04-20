@@ -11,8 +11,6 @@ import com.billsbackend.entidades.Usuario;
  *
  * @author LUIS ORTIZ
  */
-public interface PerfilServicio {
-
-    public Usuario obtener(String id);
+public interface PerfilServicio extends GenericoServicio<Usuario, String>{
     
 }

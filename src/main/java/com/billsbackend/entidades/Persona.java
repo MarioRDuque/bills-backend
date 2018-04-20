@@ -54,7 +54,7 @@ public class Persona implements Serializable {
     private String apellido;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 60)
     @Column(name = "correo")
     private String correo;
     @Basic(optional = false)
@@ -72,13 +72,10 @@ public class Persona implements Serializable {
     @NotNull
     @Column(name = "estado")
     private boolean estado;
-    @JoinColumn(name = "rucempresa", referencedColumnName = "ruc")
-    @ManyToOne(optional = false)
-    private Empresa rucempresa;
+    @Column(name = "rucempresa")
+    private Long rucempresa;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<Docpersona> docpersonaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idpersona")
-    private List<Usuario> usuarioList;
 
     public Persona() {
     }

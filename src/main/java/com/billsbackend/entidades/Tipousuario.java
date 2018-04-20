@@ -46,13 +46,8 @@ public class Tipousuario implements Serializable {
     @NotNull
     @Column(name = "estado")
     private boolean estado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipousuario")
-    private List<Tipousuariomenuopcion> tipousuariomenuopcionList;
-    @JoinColumn(name = "rucempresa", referencedColumnName = "ruc")
-    @ManyToOne(optional = false)
-    private Empresa rucempresa;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipousuario")
-    private List<Usuariotipousuario> usuariotipousuarioList;
+    @Column(name = "rucempresa")
+    private long rucempresa;
 
     public Tipousuario() {
     }
