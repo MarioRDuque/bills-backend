@@ -41,5 +41,6 @@ public class PerfilServicioImpl extends GenericoServicioImpl<Usuario, String> im
         }
         return u; //To change body of generated methods, choose Tools | Templates.
     }
+   
     
 }
