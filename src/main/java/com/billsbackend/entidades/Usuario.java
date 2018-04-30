@@ -39,7 +39,7 @@ public class Usuario implements Serializable {
     private String userId;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 32)
+    @Size(min = 1, max = 120)
     @Column(name = "clave")
     private String password;
     @Column(name = "estado")
