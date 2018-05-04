@@ -17,5 +17,7 @@ public interface UsuarioServicio extends GenericoServicio<Usuario, Long >{
     public boolean validarNuevaPassword(String username, String passwordTipeada);
     @Override
     public Usuario actualizar(Usuario unidad) throws GeneralException;
+
+    public Usuario actualizar(String username, String pwtipeada);
     
 }

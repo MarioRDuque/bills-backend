@@ -37,7 +37,6 @@ public class UsuarioServicioImpl extends GenericoServicioImpl<Usuario, Long> imp
             return encoder.matches(passwordTipeada, usuario.getPassword());
         }
         return false;
-        
     }
 
     private Usuario show(String username) {
@@ -54,6 +53,18 @@ public class UsuarioServicioImpl extends GenericoServicioImpl<Usuario, Long> imp
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         u.setPassword(encoder.encode(u.getPassword()));
         return usuarioDao.actualizar(u);
+    }
+
+    @Override
+    public Usuario actualizar(String username, String pwtipeada) {
+        Usuario usuario = this.show(username);
+        if (usuario!=null) {
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            usuario.setPassword(encoder.encode(pwtipeada));
+            return usuarioDao.actualizar(usuario);
+        } else {
+            return null;
+        }
     }
     
 }

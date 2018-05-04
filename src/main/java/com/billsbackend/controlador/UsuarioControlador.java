@@ -31,11 +31,12 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/usuario")
-public class UsuarioControlador extends GenericoControladorImpl<Usuario, Long> implements GenericoControlador<Usuario, Long>{
+public class UsuarioControlador extends GenericoControladorImpl<Usuario, Long> implements GenericoControlador<Usuario, Long> {
 
     private final Logger loggerControlador = LoggerFactory.getLogger(getClass());
     @Autowired
-    private UsuarioServicio usuarioServicio;    
+    private UsuarioServicio usuarioServicio;
+
     public UsuarioControlador(UsuarioServicio servicio) {
         super(servicio, "usuario");
     }
@@ -44,8 +45,8 @@ public class UsuarioControlador extends GenericoControladorImpl<Usuario, Long> i
     public Usuario obtenerEntidadBuscar(BusquedaPaginada busquedaPaginada) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-        @GetMapping("validarPassword/{username}/{passwordTipeada}")
+
+    @GetMapping("validarPassword/{username}/{passwordTipeada}")
     public ResponseEntity validarPassword(@PathVariable String username, @PathVariable String passwordTipeada) throws GeneralException {
         Respuesta resp = new Respuesta();
         try {
@@ -62,31 +63,27 @@ public class UsuarioControlador extends GenericoControladorImpl<Usuario, Long> i
             loggerControlador.error(e.getMessage());
             throw e;
         }
-    };
+    }
+
+    ;
     
           @GetMapping("actualizarclave/{username}/{passwordTipeada}")
-    public ResponseEntity actualizarclave(HttpServletRequest request, @RequestBody Usuario entidad) throws GeneralException {
+    public ResponseEntity actualizarclave(@PathVariable("username") String username, @PathVariable("passwordTipeada") String passwordTipeada) throws GeneralException {
         Respuesta resp = new Respuesta();
-        if (entidad != null) {
-            try {
-                Usuario guardado = usuarioServicio.actualizar(entidad);
-                if (guardado != null) {
-                    resp.setEstadoOperacion(Respuesta.EstadoOperacionEnum.EXITO.getValor());
-                    resp.setOperacionMensaje(Mensaje.OP_CORRECTA);
-                    resp.setExtraInfo(guardado);
-                } else {
-                    throw new GeneralException(Mensaje.ERROR_CRUD, "Guardar retorno nulo", loggerControlador);
-                }
-            } catch (Exception e) {
-                throw e;
+        try {
+            Usuario guardado = usuarioServicio.actualizar(username, passwordTipeada);
+            if (guardado != null) {
+                resp.setEstadoOperacion(Respuesta.EstadoOperacionEnum.EXITO.getValor());
+                resp.setOperacionMensaje(Mensaje.OP_CORRECTA);
+                resp.setExtraInfo(guardado.getUserId());
+            } else {
+                throw new GeneralException(Mensaje.ERROR_CRUD, "Existe usuario vacío", loggerControlador);
             }
-        } else {
-            resp.setEstadoOperacion(Respuesta.EstadoOperacionEnum.ERROR.getValor());
+        } catch (Exception e) {
+            throw e;
         }
         return new ResponseEntity<>(resp, HttpStatus.OK);
-    };  
-    
-     
-    
-    
+    }
+;
+
 }
