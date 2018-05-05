@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/persona")
-public class PersonaControlador extends GenericoControladorImpl<Persona, Long> implements GenericoControlador<Persona, Long>{
+public class PersonaControlador extends GenericoControladorImpl<Persona, Long> implements GenericoControlador<Persona, Long> {
 
     private final Logger loggerControlador = LoggerFactory.getLogger(getClass());
     @Autowired
@@ -29,12 +29,10 @@ public class PersonaControlador extends GenericoControladorImpl<Persona, Long> i
     public PersonaControlador(PersonaServicio servicio) {
         super(servicio, "persona");
     }
-    
-
 
     @Override
     public Persona obtenerEntidadBuscar(BusquedaPaginada busquedaPaginada) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

@@ -69,15 +69,11 @@ public class Docpersona implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Docpersona)) {
             return false;
         }
         Docpersona other = (Docpersona) object;
-        if ((this.docpersonaPK == null && other.docpersonaPK != null) || (this.docpersonaPK != null && !this.docpersonaPK.equals(other.docpersonaPK))) {
-            return false;
-        }
-        return true;
+        return !((this.docpersonaPK == null && other.docpersonaPK != null) || (this.docpersonaPK != null && !this.docpersonaPK.equals(other.docpersonaPK)));
     }
 
     @Override

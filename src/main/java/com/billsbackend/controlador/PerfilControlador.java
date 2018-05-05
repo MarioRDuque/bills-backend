@@ -5,7 +5,6 @@
  */
 package com.billsbackend.controlador;
 
-
 import com.billsbackend.entidades.Usuario;
 import com.billsbackend.servicio.PerfilServicio;
 import com.billsbackend.util.BusquedaPaginada;
@@ -21,12 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/perfil")
-public class PerfilControlador extends GenericoControladorImpl<Usuario, String> implements GenericoControlador<Usuario,String>{
+public class PerfilControlador extends GenericoControladorImpl<Usuario, String> implements GenericoControlador<Usuario, String> {
 
     private final Logger loggerControlador = LoggerFactory.getLogger(getClass());
     @Autowired
     PerfilServicio servicio;
-    
+
     public PerfilControlador(PerfilServicio servicio) {
         super(servicio, "perfil");
     }
@@ -36,6 +35,4 @@ public class PerfilControlador extends GenericoControladorImpl<Usuario, String> 
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
-    
 }

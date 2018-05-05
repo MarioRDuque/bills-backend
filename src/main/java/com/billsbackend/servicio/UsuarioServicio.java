@@ -6,7 +6,6 @@
 package com.billsbackend.servicio;
 
 import com.billsbackend.entidades.Usuario;
-import com.billsbackend.exception.GeneralException;
 
 /**
  *
@@ -15,9 +14,6 @@ import com.billsbackend.exception.GeneralException;
 public interface UsuarioServicio extends GenericoServicio<Usuario, Long >{
 
     public boolean validarNuevaPassword(String username, String passwordTipeada);
-    @Override
-    public Usuario actualizar(Usuario unidad) throws GeneralException;
-
-    public Usuario actualizar(String username, String pwtipeada);
+    public Usuario actualizarClaves(String username, String pwtipeada);
     
 }

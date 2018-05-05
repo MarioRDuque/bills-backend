@@ -16,14 +16,13 @@ import org.springframework.stereotype.Service;
  * @author LUIS ORTIZ
  */
 @Service
-public class PersonaServicioImpl extends GenericoServicioImpl<Persona, Long> implements PersonaServicio{
+public class PersonaServicioImpl extends GenericoServicioImpl<Persona, Long> implements PersonaServicio {
 
     @Autowired
     private GenericoDao<Persona, Long> personaDao;
-    
+
     public PersonaServicioImpl(GenericoDao<Persona, Long> baseHibernate) {
         super(baseHibernate);
     }
-   
-    
+
 }

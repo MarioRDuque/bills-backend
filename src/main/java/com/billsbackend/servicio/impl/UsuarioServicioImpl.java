@@ -20,9 +20,9 @@ import org.springframework.stereotype.Service;
  * @author LUIS ORTIZ
  */
 @Service
-public class UsuarioServicioImpl extends GenericoServicioImpl<Usuario, Long> implements UsuarioServicio{
-    
-     @Autowired
+public class UsuarioServicioImpl extends GenericoServicioImpl<Usuario, Long> implements UsuarioServicio {
+
+    @Autowired
     private GenericoDao<Usuario, Long> usuarioDao;
 
     public UsuarioServicioImpl(GenericoDao<Usuario, Long> baseHibernate) {
@@ -47,18 +47,11 @@ public class UsuarioServicioImpl extends GenericoServicioImpl<Usuario, Long> imp
 
         return u;
     }
-    
-    @Override
-    public Usuario actualizar(Usuario u) throws GeneralException {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        u.setPassword(encoder.encode(u.getPassword()));
-        return usuarioDao.actualizar(u);
-    }
 
     @Override
-    public Usuario actualizar(String username, String pwtipeada) {
+    public Usuario actualizarClaves(String username, String pwtipeada) {
         Usuario usuario = this.show(username);
-        if (usuario!=null) {
+        if (usuario != null) {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             usuario.setPassword(encoder.encode(pwtipeada));
             return usuarioDao.actualizar(usuario);
@@ -66,5 +59,5 @@ public class UsuarioServicioImpl extends GenericoServicioImpl<Usuario, Long> imp
             return null;
         }
     }
-    
+
 }

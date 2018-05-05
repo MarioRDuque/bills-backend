@@ -7,12 +7,10 @@ package com.billsbackend.controlador;
 
 import com.billsbackend.entidades.Usuario;
 import com.billsbackend.exception.GeneralException;
-import com.billsbackend.servicio.GenericoServicio;
 import com.billsbackend.servicio.UsuarioServicio;
 import com.billsbackend.util.BusquedaPaginada;
 import com.billsbackend.util.Mensaje;
 import com.billsbackend.util.Respuesta;
-import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -65,13 +61,11 @@ public class UsuarioControlador extends GenericoControladorImpl<Usuario, Long> i
         }
     }
 
-    ;
-    
-          @GetMapping("actualizarclave/{username}/{passwordTipeada}")
+    @GetMapping("actualizarclave/{username}/{passwordTipeada}")
     public ResponseEntity actualizarclave(@PathVariable("username") String username, @PathVariable("passwordTipeada") String passwordTipeada) throws GeneralException {
         Respuesta resp = new Respuesta();
         try {
-            Usuario guardado = usuarioServicio.actualizar(username, passwordTipeada);
+            Usuario guardado = usuarioServicio.actualizarClaves(username, passwordTipeada);
             if (guardado != null) {
                 resp.setEstadoOperacion(Respuesta.EstadoOperacionEnum.EXITO.getValor());
                 resp.setOperacionMensaje(Mensaje.OP_CORRECTA);
@@ -84,6 +78,5 @@ public class UsuarioControlador extends GenericoControladorImpl<Usuario, Long> i
         }
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
-;
 
 }
