@@ -5,10 +5,6 @@ package com.billsbackend.controlador;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
-import com.billsbackend.controlador.GenericoControlador;
-import com.billsbackend.controlador.GenericoControladorImpl;
 import com.billsbackend.entidades.Empresa;
 import com.billsbackend.exception.GeneralException;
 import com.billsbackend.servicio.EmpresaServicio;
@@ -29,27 +25,27 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 @RestController
 @RequestMapping("/empresa")
-public class EmpresaControlador extends GenericoControladorImpl<Empresa, Long> implements GenericoControlador<Empresa, Long>{
-    
+public class EmpresaControlador extends GenericoControladorImpl<Empresa, Long> implements GenericoControlador<Empresa, Long> {
+
     private final Logger loggerControlador = LoggerFactory.getLogger(getClass());
     @Autowired
     private EmpresaServicio empresaServicio;
-    
+
     @Autowired
     public EmpresaControlador(EmpresaServicio empresaServicio) {
         super(empresaServicio, "empresa");
     }
-    
+
     @GetMapping("/validar/{ruc}")
-    public ResponseEntity show(@PathVariable String ruc) throws GeneralException{
+    public ResponseEntity show(@PathVariable String ruc) throws GeneralException {
         Respuesta resp = new Respuesta();
         try {
             Empresa e = empresaServicio.validar(ruc);
-            if (e!=null) {
+            if (e != null) {
                 resp.setEstadoOperacion(Respuesta.EstadoOperacionEnum.EXITO.getValor());
                 resp.setOperacionMensaje("");
                 resp.setExtraInfo(e);
-            }else{
+            } else {
                 throw new GeneralException("Empresa no registrada", "No hay datos", loggerControlador);
             }
             return new ResponseEntity<>(resp, HttpStatus.OK);
@@ -63,5 +59,5 @@ public class EmpresaControlador extends GenericoControladorImpl<Empresa, Long> i
     public Empresa obtenerEntidadBuscar(BusquedaPaginada busquedaPaginada) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

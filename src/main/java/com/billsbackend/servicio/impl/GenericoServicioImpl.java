@@ -64,7 +64,7 @@ public abstract class GenericoServicioImpl<Entidad, TipoLlave> implements Generi
         
     @Override
     public Entidad actualizar(Entidad entidad){
-        return null;
+        return genericoDao.actualizar(entidad);
     }
         
     @Override

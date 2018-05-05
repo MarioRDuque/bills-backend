@@ -90,15 +90,11 @@ public class Empresa implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Empresa)) {
             return false;
         }
         Empresa other = (Empresa) object;
-        if ((this.ruc == null && other.ruc != null) || (this.ruc != null && !this.ruc.equals(other.ruc))) {
-            return false;
-        }
-        return true;
+        return !((this.ruc == null && other.ruc != null) || (this.ruc != null && !this.ruc.equals(other.ruc)));
     }
 
     @Override
