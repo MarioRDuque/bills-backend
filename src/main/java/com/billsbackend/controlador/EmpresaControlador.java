@@ -7,8 +7,6 @@ package com.billsbackend.controlador;
  */
 
 
-import com.billsbackend.controlador.GenericoControlador;
-import com.billsbackend.controlador.GenericoControladorImpl;
 import com.billsbackend.entidades.Empresa;
 import com.billsbackend.exception.GeneralException;
 import com.billsbackend.servicio.EmpresaServicio;

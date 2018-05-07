@@ -117,54 +117,6 @@ public class MenuServicioImp extends GenericoServicioImpl<Menu, Long> implements
             obtenerSubmenus(lmhijos, ids);
         }
     }
-//    private List<Menu> obtenerMenusPadresPorTipoDeUsuario(List<Long> ids) {
-//        Criterio filtro;
-//        filtro = Criterio.forClass(Tipousuariomenuopcion.class);
-//        filtro.add(Restrictions.eq("estado", Boolean.TRUE));
-//        filtro.createAlias("menuopcion", "imo");
-//        filtro.createAlias("tipousuario", "tu");
-//        filtro.createAlias("imo.idmenu", "menu");
-//        filtro.add(Restrictions.isNull("menu.idpadre"));
-//        filtro.add(Restrictions.in("tipousuariomenuopcionPK.idtipousuario",ids));
-//        filtro.setProjection(Projections.projectionList()
-//                .add(Projections.distinct(Projections.property("tipousuariomenuopcionPK.idmenuopcion")))
-//                .add(Projections.property("menu.id"), "id")
-//                .add(Projections.property("menu.nombre"), "nombre")
-//                .add(Projections.property("menu.icono"), "icono")
-//                .add(Projections.property("menu.estado"), "estado")
-//                .add(Projections.property("menu.url"), "url")
-//                .add(Projections.property("menu.idpadre"), "idpadre")
-//        );
-//       // filtro.addOrder(Order.asc("menu.orden"));
-//        List<Menu> lmtu = menuTipousuarioDao.proyeccionPorCriteria(filtro, Menu.class);
-//        return lmtu;
-//    }
-
-    
-    
-//    private void obtenerSubmenus(List<Menu> lm, List<Long> ids) {
-//        for (int i = 0; i < lm.size(); i++) {
-//            Criterio filtro;
-//            filtro = Criterio.forClass(Tipousuariomenuopcion.class);
-//            filtro.add(Restrictions.eq("estado", Boolean.TRUE));
-//            filtro.createAlias("idmenu", "menu");
-//            filtro.add(Restrictions.eq("menu.idpadre",lm.get(i).getId()));
-//            filtro.add(Restrictions.in("tipousuariomenuopcionPK.idtipousuario",ids));
-//            filtro.setProjection(Projections.projectionList()
-//                .add(Projections.distinct(Projections.property("tipousuariomenuopcionPK.idmenu")))
-//                .add(Projections.property("menu.id"), "id")
-//                .add(Projections.property("menu.nombre"), "nombre")
-//                .add(Projections.property("menu.icono"), "icono")
-//                .add(Projections.property("menu.estado"), "estado")
-//                .add(Projections.property("menu.url"), "url")
-//                .add(Projections.property("menu.idpadre"), "idpadre")
-//            );
-//            List<Menu> lmhijos = menuTipousuarioDao.proyeccionPorCriteria(filtro, Menu.class);
-//            apilarOpciones(lmhijos, ids);
-//            lm.get(i).setMenuList(lmhijos);
-//            obtenerSubmenus(lmhijos, ids);
-//        }
-//    }
 
     private void apilarOpciones(List<Menu> lmhijos, List<Long> ids) {
         for (int i = 0; i < lmhijos.size(); i++) {
