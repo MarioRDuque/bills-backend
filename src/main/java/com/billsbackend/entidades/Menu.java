@@ -50,8 +50,7 @@ public class Menu implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "nombre")
     private String nombre;
-    @Basic(optional = false)
-    @NotNull
+    @Basic(optional = true)
     @Column(name = "idpadre")
     private long idpadre;
     @Basic(optional = false)
