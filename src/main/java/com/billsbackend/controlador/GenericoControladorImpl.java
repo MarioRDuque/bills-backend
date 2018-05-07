@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public abstract class GenericoControladorImpl<Entidad, TipoLlave> implements GenericoControlador<Entidad, TipoLlave> {
 
     private final org.slf4j.Logger loggerControlador = LoggerFactory.getLogger(getClass());
+    @Autowired
     private GenericoServicio<Entidad, TipoLlave> servicio;
 
     public GenericoControladorImpl(GenericoServicio<Entidad, TipoLlave> servicio, String nombreEntidad) {
@@ -120,7 +122,7 @@ public abstract class GenericoControladorImpl<Entidad, TipoLlave> implements Gen
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "obtener/{id}", method = RequestMethod.GET)
     @Override
     public ResponseEntity obtener(HttpServletRequest request, @PathVariable("id") TipoLlave id) {
         Respuesta resp = new Respuesta();

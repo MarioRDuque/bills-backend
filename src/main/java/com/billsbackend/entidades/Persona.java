@@ -45,33 +45,37 @@ public class Persona implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
+    @Column(name = "telefono")
+    private String telefono;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "apellido")
     private String apellido;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 200)
+    @Size(min = 1, max = 60)
+    @Column(name = "correo")
+    private String correo;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "cliente")
-    private String cliente;
+    private boolean cliente;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 200)
     @Column(name = "proveedor")
-    private String proveedor;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "idubigeo")
-    private long idubigeo;
+    private boolean proveedor;
+    @JoinColumn(name = "idubigeo", referencedColumnName ="id")
+    @ManyToOne(optional = true)
+    private Ubigeo idubigeo;
     @Basic(optional = false)
     @NotNull
     @Column(name = "estado")
     private boolean estado;
-    @JoinColumn(name = "rucempresa", referencedColumnName = "ruc")
-    @ManyToOne(optional = false)
-    private Empresa rucempresa;
+    @Column(name = "rucempresa")
+    private Long rucempresa;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<Docpersona> docpersonaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idpersona")
-    private List<Usuario> usuarioList;
 
     public Persona() {
     }
@@ -80,7 +84,7 @@ public class Persona implements Serializable {
         this.id = id;
     }
 
-    public Persona(Long id, String nombre, String apellido, String cliente, String proveedor, long idubigeo) {
+    public Persona(Long id, String nombre, String apellido, boolean cliente, boolean proveedor, Ubigeo idubigeo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
