@@ -51,12 +51,12 @@ public class Persona implements Serializable {
     @NotNull
     @Size(min = 1, max = 200)
     @Column(name = "cliente")
-    private String cliente;
+     private boolean cliente;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
     @Column(name = "proveedor")
-    private String proveedor;
+    private boolean proveedor;
     @Basic(optional = false)
     @NotNull
     @Column(name = "idubigeo")
@@ -80,7 +80,7 @@ public class Persona implements Serializable {
         this.id = id;
     }
 
-    public Persona(Long id, String nombre, String apellido, String cliente, String proveedor, long idubigeo) {
+    public Persona(Long id, String nombre, String apellido, boolean cliente, boolean proveedor, long idubigeo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;

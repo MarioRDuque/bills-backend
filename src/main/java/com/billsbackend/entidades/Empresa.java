@@ -53,8 +53,14 @@ public class Empresa implements Serializable {
     private Date fechacaducidad;
     @Basic(optional = false)
     @NotNull
+    @Column(name = "fecharegistro")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fecharegistro;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "estado")
     private boolean estado;
+    @Basic(optional = true)
     @Lob
     @Column(name = "logo")
     private byte[] logo;
