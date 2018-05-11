@@ -52,8 +52,6 @@ public class Persona implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "apellido")
     private String apellido;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 60)
     @Column(name = "correo")
     private String correo;
@@ -102,15 +100,11 @@ public class Persona implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Persona)) {
             return false;
         }
         Persona other = (Persona) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override

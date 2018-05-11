@@ -22,18 +22,31 @@ public class EmpresaServicioImpl extends GenericoServicioImpl<Empresa, Long> imp
     public EmpresaServicioImpl(GenericoDao<Empresa, Long> genericoHibernate) {
         super(genericoHibernate);
     }
-    
+
     @Override
-    public Empresa validar(String ruc) throws GeneralException{
+    public Empresa validar(String ruc) throws GeneralException {
         Criterio filtro;
         filtro = Criterio.forClass(Empresa.class);
         filtro.add(Restrictions.eq("ruc", ruc));
         filtro.add(Restrictions.gt("fechacaducidad", new Date()));
         Empresa e = empresaDao.obtenerPorCriteriaSinProyeccionesDistinct(filtro);
-        if (e!=null && !e.isEstado()) {
+        if (e != null && !e.isEstado()) {
             throw new GeneralException("Esta empresa no esta habilitada", "La empresa fue dada de baja.", loggerServicio);
         }
         return e;
     }
-    
+
+    //metodo crear
+    @Override
+    public Empresa crear(Empresa entidad) {
+        if (entidad.getRuc() != null) {
+            entidad.setEstado(true);
+            entidad.setFechacaducidad(new Date());
+            entidad.setFecharegistro(new Date());
+            return empresaDao.insertar(entidad);
+        } else {
+            throw new GeneralException("No existe Ruc", "campo ruc obligatorio", loggerServicio);
+        }
+    }
+
 }
