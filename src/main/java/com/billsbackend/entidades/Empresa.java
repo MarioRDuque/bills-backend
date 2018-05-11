@@ -45,10 +45,9 @@ public class Empresa implements Serializable {
     @Size(min = 1, max = 6)
     @Column(name = "codigoadmin", insertable = false, updatable = false)
     private String codigoadmin;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "idubigeo")
-    private long idubigeo;
+    @JoinColumn(name = "idubigeo", referencedColumnName ="id")
+    @ManyToOne(optional = true)
+    private Ubigeo idubigeo;
     @Basic(optional = false)
     @NotNull
     @Column(name = "fechacaducidad")
