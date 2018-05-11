@@ -28,16 +28,28 @@ public class PersonaServicioImpl  extends GenericoServicioImpl<Persona,Long> imp
     }
 
     @Override
-    public Persona validar(String nombre) throws GeneralException {
-        
+    public Persona validar(String ruc) throws GeneralException {
         Criterio filtro;
         filtro = Criterio.forClass(Persona.class);
-        filtro.add(Restrictions.eq("nomnbre",nombre));
+        filtro.add(Restrictions.eq("rucempresa",ruc));
         Persona p = personaDao.obtenerPorCriteriaSinProyeccionesDistinct(filtro);
         if (p != null) {
             throw new GeneralException("Cliente persona no esta registrada", "La Persona no existe", loggerServicio);
         }
         return p;   
+    }
+     //metodo guardar datos personales
+    @Override
+    public Persona crear(Persona entidad) {
+        if (entidad.getRucempresa()!= null) {
+            entidad.setIdubigeo(1);
+            entidad.setCliente(true);
+            entidad.setProveedor(true);
+            entidad.setEstado(true);
+            return personaDao.insertar(entidad);
+        } else {
+            throw new GeneralException("No Existe persona cliente", "campo obligatorio", loggerServicio);
+        }
     }
     
     

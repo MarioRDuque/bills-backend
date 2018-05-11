@@ -9,6 +9,6 @@ import com.billsbackend.exception.GeneralException;
  */
 public interface PersonaServicio extends GenericoServicio<Persona, Long>{
   
-    public Persona validar(String nombre) throws GeneralException;
+    public Persona validar(String ruc) throws GeneralException;
 }
 
