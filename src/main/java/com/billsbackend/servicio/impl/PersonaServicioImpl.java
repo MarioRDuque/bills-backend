@@ -1,4 +1,3 @@
-
 package com.billsbackend.servicio.impl;
 
 import com.billsbackend.dao.GenericoDao;
@@ -7,22 +6,21 @@ import com.billsbackend.exception.GeneralException;
 import com.billsbackend.servicio.PersonaServicio;
 import com.billsbackend.util.Criterio;
 import org.hibernate.criterion.Restrictions;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.slf4j.Logger;
-
 /**
  *
- * @author PCQUISPE
+ * @author LUIS ORTIZ
  */
 @Service
-public class PersonaServicioImpl  extends GenericoServicioImpl<Persona,Long> implements PersonaServicio{
-    
+public class PersonaServicioImpl extends GenericoServicioImpl<Persona, Long> implements PersonaServicio {
+
     private final Logger loggerServicio = LoggerFactory.getLogger(getClass());
     @Autowired
     private GenericoDao<Persona, Long> personaDao;
-     
+
     public PersonaServicioImpl(GenericoDao<Persona, Long> baseHibernate) {
         super(baseHibernate);
     }
@@ -42,7 +40,7 @@ public class PersonaServicioImpl  extends GenericoServicioImpl<Persona,Long> imp
     @Override
     public Persona crear(Persona entidad) {
         if (entidad.getRucempresa()!= null) {
-            entidad.setIdubigeo(1);
+            entidad.setIdubigeo(null);
             entidad.setCliente(true);
             entidad.setProveedor(true);
             entidad.setEstado(true);
@@ -51,6 +49,5 @@ public class PersonaServicioImpl  extends GenericoServicioImpl<Persona,Long> imp
             throw new GeneralException("No Existe persona cliente", "campo obligatorio", loggerServicio);
         }
     }
-    
-    
+
 }

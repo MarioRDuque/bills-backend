@@ -45,33 +45,35 @@ public class Persona implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
+    @Column(name = "telefono")
+    private String telefono;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "apellido")
     private String apellido;
+    @Size(min = 1, max = 60)
+    @Column(name = "correo")
+    private String correo;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 200)
     @Column(name = "cliente")
-     private boolean cliente;
+    private boolean cliente;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 200)
     @Column(name = "proveedor")
     private boolean proveedor;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "idubigeo")
-    private long idubigeo;
+    @JoinColumn(name = "idubigeo", referencedColumnName ="id")
+    @ManyToOne(optional = true)
+    private Ubigeo idubigeo;
     @Basic(optional = false)
     @NotNull
     @Column(name = "estado")
     private boolean estado;
-    @JoinColumn(name = "rucempresa", referencedColumnName = "ruc")
-    @ManyToOne(optional = false)
-    private Empresa rucempresa;
+    @Column(name = "rucempresa")
+    private Long rucempresa;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<Docpersona> docpersonaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idpersona")
-    private List<Usuario> usuarioList;
 
     public Persona() {
     }
@@ -80,7 +82,7 @@ public class Persona implements Serializable {
         this.id = id;
     }
 
-    public Persona(Long id, String nombre, String apellido, boolean cliente, boolean proveedor, long idubigeo) {
+    public Persona(Long id, String nombre, String apellido, boolean cliente, boolean proveedor, Ubigeo idubigeo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -98,15 +100,11 @@ public class Persona implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Persona)) {
             return false;
         }
         Persona other = (Persona) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override

@@ -41,9 +41,8 @@ public class Docpersona implements Serializable {
     @JoinColumn(name = "idtipodocumento", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Tipodocumento tipodocumento;
-    @JoinColumn(name = "idpersona", referencedColumnName = "id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Persona persona;
+    @Column(name = "idpersona", insertable = false, updatable = false)
+    private Long persona;
 
     public Docpersona() {
     }
@@ -70,15 +69,11 @@ public class Docpersona implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Docpersona)) {
             return false;
         }
         Docpersona other = (Docpersona) object;
-        if ((this.docpersonaPK == null && other.docpersonaPK != null) || (this.docpersonaPK != null && !this.docpersonaPK.equals(other.docpersonaPK))) {
-            return false;
-        }
-        return true;
+        return !((this.docpersonaPK == null && other.docpersonaPK != null) || (this.docpersonaPK != null && !this.docpersonaPK.equals(other.docpersonaPK)));
     }
 
     @Override

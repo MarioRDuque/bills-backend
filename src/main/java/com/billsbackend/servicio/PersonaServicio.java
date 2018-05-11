@@ -1,4 +1,3 @@
-
 package com.billsbackend.servicio;
 import com.billsbackend.entidades.Persona;
 import com.billsbackend.exception.GeneralException;
@@ -11,4 +10,3 @@ public interface PersonaServicio extends GenericoServicio<Persona, Long>{
   
     public Persona validar(String ruc) throws GeneralException;
 }
-

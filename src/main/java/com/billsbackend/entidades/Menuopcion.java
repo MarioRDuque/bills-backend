@@ -53,9 +53,8 @@ public class Menuopcion implements Serializable {
     @NotNull
     @Column(name = "estado")
     private boolean estado;
-    @JoinColumn(name = "idmenu", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Menu idmenu;
+    @Column(name = "idmenu")
+    private Long idmenu;
 
     public Menuopcion() {
     }
