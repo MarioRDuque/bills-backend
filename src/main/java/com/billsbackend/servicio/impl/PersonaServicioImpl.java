@@ -29,7 +29,7 @@ public class PersonaServicioImpl extends GenericoServicioImpl<Persona, Long> imp
     public Persona validar(String ruc) throws GeneralException {
         Criterio filtro;
         filtro = Criterio.forClass(Persona.class);
-        //filtro.add(Restrictions.eq("rucempresa",ruc));
+        filtro.add(Restrictions.eq("rucempresa",ruc));
         Persona p = personaDao.obtenerPorCriteriaSinProyeccionesDistinct(filtro);
         if (p != null) {
             throw new GeneralException("La persona no esta registrada", "La Persona no existe", loggerServicio);
