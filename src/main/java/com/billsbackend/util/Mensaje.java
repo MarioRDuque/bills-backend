@@ -31,5 +31,7 @@ public class Mensaje {
     public static final String ERR_LISTAR = "Error al listar datos";
 
     public static final String NO_AUTORIZADO = "Usted no está autorizado";
+    public static String ERROR_CRUD_GUARDAR="Error al guardar los datos";
+    public static String OPERACION_CORRECTA="La operación se relealizó exitosamente";
 
 }

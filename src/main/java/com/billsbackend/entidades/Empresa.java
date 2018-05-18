@@ -45,10 +45,9 @@ public class Empresa implements Serializable {
     @Size(min = 1, max = 6)
     @Column(name = "codigoadmin", insertable = false, updatable = false)
     private String codigoadmin;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "idubigeo")
-    private long idubigeo;
+    @JoinColumn(name = "idubigeo", referencedColumnName ="id")
+    @ManyToOne(optional = true)
+    private Ubigeo idubigeo;
     @Basic(optional = false)
     @NotNull
     @Column(name = "fechacaducidad")
@@ -56,8 +55,14 @@ public class Empresa implements Serializable {
     private Date fechacaducidad;
     @Basic(optional = false)
     @NotNull
+    @Column(name = "fecharegistro")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fecharegistro;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "estado")
     private boolean estado;
+    @Basic(optional = true)
     @Lob
     @Column(name = "logo")
     private byte[] logo;

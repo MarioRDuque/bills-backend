@@ -45,8 +45,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(HttpMethod.GET, "/empresa/validar/{ruc}");
-        web.ignoring().antMatchers(HttpMethod.POST, "/files");
+        web.ignoring().antMatchers(HttpMethod.GET,"/empresa/validar/{ruc}");
+        web.ignoring().antMatchers(HttpMethod.POST,"/empresa/crear");
+        web.ignoring().antMatchers(HttpMethod.POST,"/persona/crear");
     }
 
     @Override
