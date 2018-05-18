@@ -49,8 +49,6 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "idpersona", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Persona idpersona;
-    @Basic(optional = false)
-    @NotNull
     @Lob
     @Column(name="foto")
     private byte[] foto;
