@@ -77,7 +77,7 @@ public class Empresa implements Serializable {
         this.ruc = ruc;
     }
 
-    public Empresa(String ruc, String razonsocial, long idubigeo, byte[] logo, Date fechacaducidad, boolean estado) {
+    public Empresa(String ruc, String razonsocial, Ubigeo idubigeo, byte[] logo, Date fechacaducidad, boolean estado) {
         this.ruc = ruc;
         this.razonsocial = razonsocial;
         this.idubigeo = idubigeo;
